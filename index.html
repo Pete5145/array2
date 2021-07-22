@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with Array 2</title>
+</head>
+<body>
+    <h1>Working with Array</h1>
+    <button id="btn1">Print all integers from 1 - 255</button> <br>
+    <button id="btn2">Print Ints and sum 0 - 255 </button> <br>
+    <button id="btn3">Print Max of Array</button> <br>
+    <button id="btn4">Print all odd integers between 1 - 255</button> <br>
+    <button id="btn5">Print the number of array values greater than Y.</button> <br>
+    <button id="btn6">Print the Max, Min, Average values for an array.</button> <br>
+    <button id="btn7">Swap string "Codebits" for any negative values in an array</button> <br>
+    <button id="btn8">Print all odd integers from 1 - 255. </button> <br>
+    <button id="btn9">Print each value in a given array</button> <br>
+    <button id="btn10">Print Average of an Array </button> <br>
+    <button id="btn11">Square each value in a given array</button> <br>
+    <button id="btn12">Return the given array after setting any negative values to zero</button>
+
+
+
+    <script>
+        let btn1 = document.getElementById("btn1"); 
+        let btn2 = document.getElementById("btn2");
+        let btn3 = document.getElementById("btn3");
+        let btn4 = document.getElementById("btn4");
+        let btn5 = document.getElementById("btn5");
+        let btn6 = document.getElementById("btn6");
+        let btn7 = document.getElementById("btn7");
+        let btn8 = document.getElementById("btn8");
+        let btn9 = document.getElementById("btn9");
+        let btn10 = document.getElementById("btn10");
+        let btn11 = document.getElementById("btn11");
+        let btn12 = document.getElementById("btn12");
+        
+
+        
+
+        btn1.addEventListener("click", printNumbers);
+        btn2.addEventListener("click", printNumAndSum);
+        btn3.addEventListener("click", findMaxOfArray);
+        btn4.addEventListener("click", printOddNumbers);
+        btn5.addEventListener("click", printNumGreaterThanY);
+        btn6.addEventListener("click", printMinMaxAverage);
+        btn7.addEventListener("click", swapStringForNegValue);
+        btn8.addEventListener("click", printAllOddNumbers);
+        btn9.addEventListener("click", printEachValue);
+        btn10.addEventListener("click", printAverage);
+        btn11.addEventListener("click", squareArrayValue);
+        btn12.addEventListener("click", resetNegValToZero);
+
+
+
+        function printNumbers() {
+            for (let i = 1; i <= 255; i++) {
+                document.write(`${i}<br>`);
+            }
+        }
+       
+       
+       
+        function printNumAndSum() {
+            sum = 0;
+            document.write(`The integers are: <br>`)
+            for (let i = 0; i <= 255; i++) {
+                document.write(`${i} <br>`);
+                sum = sum + i;
+            }
+            document.write(`The sum of the integers is ${sum}`);
+        }
+
+
+
+        function findMaxOfArray() {
+            let num = new Array(5);
+            myArray =[];
+            for (let i = 0; i < num.length; i++) {
+                 num[i] = parseInt(prompt(`Enter number ${[i + 1]} `));
+                 myArray.push(num[i]);
+            }
+               
+                let largestNum = num[0];
+
+                 for (let i = 0; i < num.length; i++) {
+                      if (num[i] > largestNum) {
+                          largestNum = num[i]
+                      }
+                 }
+                 alert(`${myArray}`);
+                 alert(`The largest number of the array is ${largestNum}`);
+        }
+ 
+        
+        function printOddNumbers() {
+            let myArray = [];
+             for (let i = 0; i <= 255; i++) {
+                  if (i % 2 == 0) {
+                      continue;
+                    }
+                    myArray.push(i);
+                }
+                document.write(`The odd numbers are:[${myArray}]<br>`);
+
+                //OR.
+                // for (let i = 0; i <= 255; i++) {
+                //      if (i % 2 != 0) {
+                //          myArray.push(i);
+                //      }
+                //     }
+                //     document.write(`The Odd numbers are: $[{myArray}]<br>`);
+        }
+
+
+        function printNumGreaterThanY() {
+            let num = new Array (5);
+            myArray = [];
+            counter = 0;
+            for (let i = 0; i < num.length; i++) {
+                num[i] = parseInt(prompt(`Enter number ${i + 1}`));
+            }
+            y = parseInt(prompt(`Enter the value of Y:`));
+
+           for (let i = 0; i < num.length; i++) {
+               if (num[i] < y) {
+                   continue;
+                }
+                counter++
+                myArray.push(num[i]);
+            }
+            document.write(`The number of values greater than Y is ${counter}<br>The values greater than Y are as follow: [${myArray}]`);
+        }
+
+        
+        function printMinMaxAverage() {
+         let num = new Array(5)
+         sum = 0;
+        for (let i = 0; i < num.length; i++) {
+            num[i] = parseInt(prompt(`Enter number ${i + 1}`));  
+            sum = sum + num[i];
+            average = sum / num.length;
+        }
+        document.write(`The average value is ${average}<br>`)
+        let largestNum = num[0];
+        
+
+        for (let i = 0; i < num.length; i++) {
+             if (num[i] > largestNum) {
+                 largestNum = num[i];
+            }
+        }
+        let smallestNum = num[0];
+
+        for (let i = 0; i < num.length; i++) {
+             if (num[i] < smallestNum) {
+                 smallestNum = num[i]
+             }
+        }
+        document.write(`The Max Value is ${largestNum} <br> The Min value is ${smallestNum}`);
+}
+
+
+        function swapStringForNegValue() {
+            let num = new Array(5);
+            myArray = [];
+            for (let i = 0; i < num.length; i++) {
+                 num[i] = parseInt(prompt(`Enter number ${i + 1}`));
+                 if (num[i] < 0) {
+                     num[i] = "Codebits"
+                 }
+                 myArray.push(num[i]);
+            }
+            alert(`The array is ${myArray}`);
+            
+        }
+
+        function printEachValue() {
+            let num = new Array(5);
+            myArray= [];
+            for (let i = 0; i < num.length; i++) {
+                 num[i] = parseInt(prompt(`Enter number ${i + 1}`));
+                 myArray.push(num[i]);
+            }
+            document.write(`The Given Array is ${myArray}`);
+        }
+
+        function printAllOddNumbers() {
+            document.write(`The odd numbers from 1 - 255 are:<br>`)
+            for (let i = 0; i <= 255; i++) {
+                if (i % 2 != 0) {
+                document.write(`${i}<br>`)
+                }   
+            }
+        }
+        
+
+        function printAverage() {
+            let num = new Array(5);
+            let myArray = [];
+            let sum = 0;
+            for (let i = 0; i < num.length; i++) {
+                num[i] = parseInt(prompt(`Enter number ${i + 1}`));
+                myArray.push(num[i]);
+                sum = sum + num[i];
+                average = sum / num.length;
+            }
+            alert(`The Array given is ${myArray}`);
+            alert(`The Average of the array is ${average}`);
+}
+
+      function resetNegValToZero() {
+        let num = new Array(5);
+        myArray = [];
+        for (let i = 0; i < num.length; i++) {
+           num[i] = parseInt(prompt(`Enter number ${i + 1}`));
+           if (num[i] < 0) {
+               num[i] = 0;
+           }
+            myArray.push(num[i]);
+        }
+        alert(`The given array is ${myArray}`);
+    }
+
+
+    function squareArrayValue() {
+        let num = new Array(5);
+        let myArray = [];
+        
+        for (let i = 0; i < num.length; i++) {
+            num[i] = parseInt(prompt(`Enter number ${i + 1}`));
+            let square = num[i] * num[i];
+            myArray.push(square);
+        }
+
+        //         OR
+        // for (let i = 0; i < num.length; i++) {
+        //     num[i] = parseInt(prompt(`Enter number ${i + 1}`));
+        //     myArray.push(num[i]*num[i]);
+        // }
+        document.write(`The square of the array is ${myArray}`);
+    }
+</script>
+</body>
+</html>
